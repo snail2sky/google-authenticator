@@ -7,8 +7,6 @@ import (
 	"encoding/base32"
 	"encoding/binary"
 	"fmt"
-	"io/ioutil"
-	"os/exec"
 	"strconv"
 	"strings"
 	"time"
@@ -77,12 +75,16 @@ func getTOTPToken(secret string) string {
 
 func main() {
 	//Read the secret token from file system
-	data, err := ioutil.ReadFile("dummy_secret.pem")
-	check(err)
-	secret := string(data)
+	var secret string
+	fmt.Scanln(&secret)
+	if secret == "" {
+		return
+	}
 	otp := getTOTPToken(secret)
+	fmt.Println(otp)
 
-	//Copies the otp generated to your clipboard
-	err = exec.Command("bash", "-c", fmt.Sprintf("echo %s | tr -d \"\n, \" | pbcopy", otp)).Run()
-	check(err)
+	// some os not support pbcopy, such as windows, linux, you should adapt yourself.
+	// Copies the otp generated to your clipboard
+	// err := exec.Command("bash", "-c", fmt.Sprintf("echo %s | tr -d \"\n, \" | pbcopy", otp)).Run()
+	// check(err)
 }
