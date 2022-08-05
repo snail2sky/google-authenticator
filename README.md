@@ -18,8 +18,7 @@ export PATH
 ```
 
 - Clone the repo in your GOPATH
-- Provide your 16-digit secret token in secrets.pem file
-- Change the input file in `google-authenticator.go` from `dummy_secret.pem` to `secret.pem`
+- `echo $SECRET | google-authenticator.go`
 
 The auth code works on the secret token and the current time. The time on your local machine should be in sync according to NTP.
 - Run `sudo ntpdate time.nist.gov` to sync time
