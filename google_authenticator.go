@@ -81,6 +81,7 @@ func main() {
 		return
 	}
 	otp := getTOTPToken(secret)
+	// print MFA to console
 	fmt.Println(otp)
 
 	// some os not support pbcopy, such as windows, linux, you should adapt yourself.
