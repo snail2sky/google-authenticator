@@ -1,1 +1,1 @@
-echo $SECRET | google-authenticator.go
+echo $SECRET | google-authenticator
