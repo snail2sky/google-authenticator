@@ -1,1 +1,1 @@
-echo $SECRET | google-authenticator
+echo $SECRET | ./google-authenticator
